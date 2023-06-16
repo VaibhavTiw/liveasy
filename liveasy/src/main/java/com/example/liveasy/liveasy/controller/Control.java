@@ -3,14 +3,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.liveasy.liveasy.entities.Loads;
@@ -29,7 +28,7 @@ public class Control {
         return "Application is Running.";
     }
 
-    @GetMapping("/load")
+    @GetMapping("/loads")
     public List<Loads> getLoads(){
         return this.loadService.getLoads();
     }
@@ -58,10 +57,10 @@ public class Control {
         return "Load Details Updated Succesfully";
     }
 
-    // @GetMapping("/load")
-    // public ResponseEntity<List<Loads>> getByParam(@RequestParam("shipperid") Long shipperid){
-    //     ResponseEntity<List<Loads>> c = loadService.getByParam(shipperid);
-    //     return c;
-    // }
-
+    @GetMapping("/load")
+    public List<Loads> getByParam(@RequestParam("shipperid") Long shipperid){
+        return loadService.getByParam(shipperid);
+    }
 }
+
+
